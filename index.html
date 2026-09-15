@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio by Gina Liang</title>
+<style>
+  :root {
+    --bg-light-blue: #e8f0fe;
+    --bg-white: #ffffff;
+    --accent-blue: #1163dd;
+    --text-dark: #333333;
+    --text-muted: #6b6b6b;
+    --border-light: #dbe4f3;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+      "Microsoft YaHei", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--text-dark);
+    background: var(--bg-white);
+    line-height: 1.6;
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
+  }
+
+  /* ---------- Header ---------- */
+  header.hero {
+    background: linear-gradient(180deg, var(--bg-light-blue) 0%, #ffffff 100%);
+    padding: 56px 24px 48px;
+  }
+
+  .hero-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 40px;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .hero-photo {
+    flex-shrink: 0;
+  }
+
+  .hero-photo img {
+    width: 320px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 1px solid var(--border-light);
+    box-shadow: 0 8px 24px rgba(74, 124, 201, 0.15);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+  }
+
+  .hero-photo img:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 14px 32px rgba(74, 124, 201, 0.25);
+  }
+
+  .hero-text {
+    max-width: 620px;
+    text-align: left;
+  }
+
+  .hero-text h1 {
+    font-size: 2.2rem;
+    color: var(--accent-blue);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+
+  .hero-text .role {
+    margin-top: 6px;
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    font-weight: 500;
+  }
+
+  .hero-text .contact {
+    margin-top: 14px;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .hero-text .contact a {
+    color: var(--accent-blue);
+    text-decoration: none;
+  }
+
+  .hero-text .contact a:hover {
+    text-decoration: underline;
+  }
+
+  .hero-text .summary {
+    margin-top: 20px;
+    font-size: 0.98rem;
+    color: var(--text-dark);
+    background: var(--bg-white);
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    padding: 18px 22px;
+  }
+
+  .hero-text .summary strong {
+    color: var(--accent-blue);
+    display: block;
+    margin-bottom: 8px;
+    font-size: 1.02rem;
+  }
+
+  .hero-text .summary ol {
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  /* ---------- Sections ---------- */
+  section {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 56px 24px;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  section:last-of-type {
+    border-bottom: none;
+  }
+
+  section h2 {
+    color: var(--accent-blue);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  section .desc {
+    color: var(--text-muted);
+    font-size: 0.98rem;
+    margin-bottom: 28px;
+    max-width: 720px;
+  }
+
+  section h3.sub-title {
+    font-size: 1.05rem;
+    color: var(--text-dark);
+    font-weight: 700;
+    margin: 32px 0 14px;
+    padding-left: 12px;
+    border-left: 4px solid var(--accent-blue);
+  }
+
+  section h3.sub-title:first-of-type {
+    margin-top: 8px;
+  }
+
+  /* ---------- Image grid ---------- */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+  }
+
+  .grid-item {
+    background: var(--bg-light-blue);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border-light);
+  }
+
+  .grid-item img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    cursor: zoom-in;
+    transition: opacity 0.2s ease;
+  }
+
+  .grid-item img:hover {
+    opacity: 0.85;
+  }
+
+  .grid-item .caption {
+    padding: 10px 12px;
+    font-size: 0.85rem;
+    color: var(--text-dark);
+    background: var(--bg-white);
+  }
+
+  /* ---------- Logo grid ---------- */
+  .logo-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  .logo-item {
+    background: var(--bg-white);
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+  }
+
+  .logo-item img {
+    width: 100%;
+    height: 80px;
+    object-fit: contain;
+    margin: 0 auto 10px;
+  }
+
+  .logo-item .caption {
+    font-size: 0.82rem;
+    color: var(--text-dark);
+  }
+
+  /* ---------- Video ---------- */
+  .video-wrap {
+    margin-top: 8px;
+  }
+
+  .video-wrap.landscape iframe {
+    width: 100%;
+    height: 400px;
+    border: none;
+    border-radius: 8px;
+  }
+
+  .video-grid-vertical {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
+
+  .video-grid-vertical .video-item iframe {
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    height: auto;
+    border: none;
+    border-radius: 8px;
+    display: block;
+  }
+
+  .video-grid-vertical .caption {
+    padding: 8px 4px 0;
+    font-size: 0.85rem;
+    color: var(--text-dark);
+  }
+
+  /* ---------- Tool list ---------- */
+  .tool-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .tool-list li {
+    background: var(--bg-light-blue);
+    border-radius: 8px;
+    padding: 16px 20px;
+    border-left: 4px solid var(--accent-blue);
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .tool-list .tool-icon {
+    font-size: 1.4rem;
+    line-height: 1.4;
+  }
+
+  .tool-list .tool-name {
+    font-weight: 700;
+    color: var(--accent-blue);
+    margin-bottom: 4px;
+    display: block;
+  }
+
+  .tool-list .tool-desc {
+    color: var(--text-dark);
+    font-size: 0.95rem;
+  }
+
+  /* ---------- Lightbox ---------- */
+  .lightbox-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(51, 51, 51, 0.85);
+    z-index: 999;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    cursor: zoom-out;
+  }
+
+  .lightbox-overlay.active {
+    display: flex;
+  }
+
+  .lightbox-overlay img {
+    max-width: 90vw;
+    max-height: 90vh;
+    border-radius: 6px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+  }
+
+  /* ---------- Footer ---------- */
+  footer {
+    text-align: center;
+    padding: 32px 24px;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    background: var(--bg-light-blue);
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 700px) {
+    .hero-inner {
+      flex-direction: column;
+      text-align: center;
+    }
+    .hero-text {
+      text-align: left;
+    }
+    .hero-photo img {
+      width: 100%;
+      max-width: 320px;
+      height: 190px;
+    }
+    .logo-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .hero-text h1 {
+      font-size: 1.7rem;
+    }
+    section {
+      padding: 40px 16px;
+    }
+    .grid {
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 14px;
+    }
+    .grid-item img {
+      height: 120px;
+    }
+    .video-wrap.landscape iframe {
+      height: 220px;
+    }
+    .video-grid-vertical {
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ========== Header ========== -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-photo">
+      <!-- 替换这里：个人照片，建议横版比例约 16:10 -->
+      <img src="https://github.com/siuzingleung-sudo/portfolio/blob/main/IMG_0704.JPG?raw=true" alt="个人照片">
+    </div>
+    <div class="hero-text">
+      <h1>梁小静</h1>
+      <div class="role">Gina Liang</div>
+      <div class="contact">
+        <!-- 替换这里：联系方式 -->
+        <div>Email：<a href="mailto:498859749@qq.com">498859749@qq.com</a></div>
+        <div>Tel：13316091428</div>
+      </div>
+      <div class="summary">
+        <strong>我能做什么？</strong>
+        <ol>
+          <li>内容策划与创作：产品PPT画册/海报/视频脚本/slogan/推文/小红书，将复杂术语转化为消费者易懂的语言</li>
+          <li>市场推广&amp;本地化：分析竞品与受众，提炼产品亮点；策划品牌活动、达人合作和粉丝互动；中英文双语本地化</li>
+          <li>AI创作：利用AI工具设计海报图片/视频</li>
+          <li>渠道运营&amp;广告投放：搭建国内外线上推广渠道；策划月度选题；投放并优化广告，推动转化增长</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ========== Section 1：曾服务品牌 ========== -->
+<section>
+  <h2>曾服务品牌 / Served Brands</h2>
+  <div class="logo-grid">
+    <!-- 替换这里：品牌 logo，共 8 个，分两行排列 -->
+    <div class="logo-item">
+      <img src="https://github.com/siuzingleung-sudo/portfolio/blob/main/Logo-EJG_Vrt-300x145.png?raw=true" alt="美国嘉露酒庄">
+      <div class="caption">美国嘉露酒庄</div>
+    </div>
+    <div class="logo-item">
+      <img src="https://github.com/siuzingleung-sudo/portfolio/blob/main/Fonterra_logo_logotype_2.png?raw=true" alt="新西兰恒天然乳品">
+      <div class="caption">新西兰恒天然乳品</div>
+    </div>
+    <div class="logo-item">
+      <img src="https://github.com/siuzingleung-sudo/portfolio/blob/main/hkgta-logo@2x.png?raw=true" alt="香港高尔夫球及网球学院">
+      <div class="caption">香港高尔夫球及网球学院</div>
+    </div>
+    <div class="logo-item">
+      <img src="https://github.com/siuzingleung-sudo/portfolio/blob/main/leegarden.png?raw=true" alt="香港铜锣湾利园区">
+      <div class="caption">香港铜锣湾利园区</div>
+    </div>
+    <div class="logo-item">
+      <img src="https://github.com/siuzingleung-sudo/portfolio/blob/main/global-icon.png?raw=true" alt="中国电信（香港）">
+      <div class="caption">中国电信（香港）</div>
+    </div>
+    <div class="logo-item">
+      <img src="https://github.com/siuzingleung-sudo/portfolio/blob/main/花城汇海心沙.png?raw=true" alt="花城汇 | 海心沙">
+      <div class="caption">花城汇 | 海心沙</div>
+    </div>
+    <div class="logo-item">
+      <img src="https://github.com/siuzingleung-sudo/portfolio/blob/main/hainan.JPG?raw=true" alt="海南文旅厅">
+      <div class="caption">海南文旅厅</div>
+    </div>
+    <div class="logo-item">
+      <img src="https://github.com/siuzingleung-sudo/portfolio/blob/main/Australia.png?raw=true" alt="澳大利亚贸易投资委员会">
+      <div class="caption">澳大利亚贸易投资委员会</div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== Section 2：文案策划作品 ========== -->
+<section>
+  <h2>文案策划作品 / Copywriting &amp; Content</h2>
+
+  <h3 class="sub-title">产品画册</h3>
+  <div class="grid">
+    <!-- 替换这里：产品画册截图，共 3 张 -->
+    <div class="grid-item">
+      <img src="https://github.com/siuzingleung-sudo/portfolio/blob/main/Zenbru.png?raw=true" alt="产品画册1" class="lightbox-trigger">
+      <div class="caption">产品画册-咖啡</div>
+    </div>
+    <div class="grid-item">
+      <img src="https://github.com/siuzingleung-sudo/portfolio/blob/main/AlphaMeta.png?raw=true" alt="产品画册2" class="lightbox-trigger">
+      <div class="caption">产品画册-有机食品</div>
+    </div>
+    <div class="grid-item">
+      <img src="https://github.com/siuzingleung-sudo/portfolio/blob/main/Aroma.png?raw=true" alt="产品画册3" class="lightbox-trigger">
+      <div class="caption">产品画册-精油</div>
+    </div>
+  </div>
+
+  <h3 class="sub-title">产品海报</h3>
+  <div class="grid">
+    <!-- 替换这里：产品海报截图，共 6 张 -->
+    <div class="grid-item">
+      <img src="https://github.com/siuzingleung-sudo/portfolio/blob/main/海报1png.png?raw=true" alt="产品海报1" class="lightbox-trigger">
+      <div class="caption">新品上市宣传海报</div>
+    </div>
+    <div class="grid-item">
+      <img src="https://github.com/siuzingleung-sudo/portfolio/blob/main/海报3.png?raw=true" alt="产品海报2" class="lightbox-trigger">
+      <div class="caption">产品卖点提炼海报</div>
+    </div>
+    <div class="grid-item">
+      <img src="https://github.com/siuzingleung-sudo/portfolio/blob/main/海报5.png?raw=true" alt="产品海报3" class="lightbox-trigger">
+      <div class="caption">产品卖点提炼海报</div>
+    </div>
+    <div class="grid-item">
+      <img src="https://github.com/siuzingleung-sudo/portfolio/blob/main/海报6.png?raw=true" alt="产品海报4" class="lightbox-trigger">
+      <div class="caption">产品宣传折页</div>
+    </div>
+    <div class="grid-item">
+      <img src="https://github.com/siuzingleung-sudo/portfolio/blob/main/海报2.png?raw=true" alt="产品海报5" class="lightbox-trigger">
+      <div class="caption">节日海报</div>
+    </div>
+    <div class="grid-item">
+      <img src="https://github.com/siuzingleung-sudo/portfolio/blob/main/海报4.png?raw=true" alt="产品海报6" class="lightbox-trigger">
+      <div class="caption">节日海报</div>
+    </div>
+  </div>
+
+  <h3 class="sub-title">微信公众号创意推文</h3>
+  <div class="grid">
+    <!-- 替换这里：微信公众号推文截图，共 3 张 -->
+    <div class="grid-item">
+      <img src="https://github.com/siuzingleung-sudo/portfolio/blob/main/作品集20251102_14(1).png?raw=true" alt="公众号推文1" class="lightbox-trigger">
+      <div class="caption">结合“鱿鱼游戏”热点创意推文</div>
+    </div>
+    <div class="grid-item">
+      <img src="https://github.com/siuzingleung-sudo/portfolio/blob/main/作品集20251102_18.png?raw=true" alt="公众号推文2" class="lightbox-trigger">
+      <div class="caption">品牌活动新闻稿推文</div>
+    </div>
+    <div class="grid-item">
+      <img src="https://github.com/siuzingleung-sudo/portfolio/blob/main/作品集20251102_17.png?raw=true" alt="公众号推文3" class="lightbox-trigger">
+      <div class="caption">618电商战报推文</div>
+    </div>
+  </div>
+
+  <h3 class="sub-title">小红书策划</h3>
+  <div class="grid">
+    <!-- 替换这里：小红书笔记截图，共 6 张 -->
+    <div class="grid-item">
+      <img src="https://github.com/siuzingleung-sudo/portfolio/blob/main/小红书1.png?raw=true" alt="小红书1" class="lightbox-trigger">
+      <div class="caption">小红书活动策划笔记</div>
+    </div>
+    <div class="grid-item">
+      <img src="https://github.com/siuzingleung-sudo/portfolio/blob/main/截屏2026-09-15%2000.41.28.png?raw=true" alt="小红书2" class="lightbox-trigger">
+      <div class="caption">小红书热门话题笔记</div>
+    </div>
+    <div class="grid-item">
+      <img src="https://github.com/siuzingleung-sudo/portfolio/blob/main/截屏2026-09-15%2000.41.01.png?raw=true" alt="小红书3" class="lightbox-trigger">
+      <div class="caption">小红书达人合作笔记</div>
+    </div>
+    <div class="grid-item">
+      <img src="https://github.com/siuzingleung-sudo/portfolio/blob/main/截屏2026-09-15%2000.40.43.png?raw=true" alt="小红书4" class="lightbox-trigger">
+      <div class="caption">小红书测评笔记</div>
+    </div>
+    <div class="grid-item">
+      <img src="https://via.placeholder.com/400x300" alt="小红书5" class="lightbox-trigger">
+      <div class="caption">小红书爆款标题文案</div>
+    </div>
+    <div class="grid-item">
+      <img src="https://via.placeholder.com/400x300" alt="小红书6" class="lightbox-trigger">
+      <div class="caption">小红书场景化内容</div>
+    </div>
+  </div>
+
+  <h3 class="sub-title">Instagram Post</h3>
+  <div class="grid">
+    <!-- 替换这里：Instagram Post 截图，共 3 张 -->
+    <div class="grid-item">
+      <img src="https://github.com/siuzingleung-sudo/portfolio/blob/main/IG1.png?raw=true" alt="Instagram Post 1" class="lightbox-trigger">
+      <div class="caption">Instagram 产品宣传 Post</div>
+    </div>
+    <div class="grid-item">
+      <img src="https://github.com/siuzingleung-sudo/portfolio/blob/main/IG3.png?raw=true" alt="Instagram Post 2" class="lightbox-trigger">
+      <div class="caption">Instagram 新品发布 Post</div>
+    </div>
+    <div class="grid-item">
+      <img src="https://github.com/siuzingleung-sudo/portfolio/blob/main/IG2.png?raw=true" alt="Instagram Post 3" class="lightbox-trigger">
+      <div class="caption">Instagram 互动活动 Post</div>
+    </div>
+  </div>
+
+  <h3 class="sub-title">视频脚本</h3>
+  <div class="video-wrap landscape">
+    <!-- 替换这里：视频脚本对应视频，横版 -->
+    <iframe
+      src="https://www.youtube.com/embed/InJDpJyyq5c?si=1fCzPF3ZojWYoZBO" title="YouTube video player"
+      scrolling="no"
+      border="0"
+      frameborder="no"
+      framespacing="0"
+      allowfullscreen="true">
+    </iframe>
+  </div>
+</section>
+
+<!-- ========== Section 3：AI创作作品 ========== -->
+<section>
+  <h2>AI创作作品 / AI Creative Works</h2>
+
+  <h3 class="sub-title">宣传海报</h3>
+  <div class="grid">
+    <!-- 替换这里：AI生成宣传海报截图，共 3 张 -->
+    <div class="grid-item">
+      <img src="https://github.com/siuzingleung-sudo/portfolio/blob/main/ai海报.jpg?raw=true" alt="AI宣传海报1" class="lightbox-trigger">
+      <div class="caption">产品卖点宣传海报</div>
+    </div>
+    <div class="grid-item">
+      <img src="https://github.com/siuzingleung-sudo/portfolio/blob/main/20260318%20IK_IG%20Post_V2.png?raw=true" alt="AI宣传海报2" class="lightbox-trigger">
+      <div class="caption">品牌互动配图</div>
+    </div>
+    <div class="grid-item">
+      <img src="https://github.com/siuzingleung-sudo/portfolio/blob/main/20260213%20IK_IG%20Post_Final.png?raw=true" alt="AI宣传海报3" class="lightbox-trigger">
+      <div class="caption">节日海报</div>
+    </div>
+  </div>
+
+  <h3 class="sub-title">AI短视频</h3>
+  <div class="video-grid-vertical">
+    <!-- 替换这里：AI 短视频，共 3 个，竖版 9:16 -->
+    <div class="video-item">
+      <iframe
+        src="https://player.bilibili.com/player.html?bvid=BV1c5ej6qEnj&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true""
+        scrolling="no"
+        border="0"
+        frameborder="no"
+        framespacing="0"
+        allowfullscreen="true">
+      </iframe>
+      <div class="caption">Seedance 生成短视频 1</div>
+    </div>
+    <div class="video-item">
+      <iframe
+        src="https://player.bilibili.com/player.html?bvid=BV1PNej6CEZT&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"
+        scrolling="no"
+        border="0"
+        frameborder="no"
+        framespacing="0"
+        allowfullscreen="true">
+      </iframe>
+      <div class="caption">Kling 生成短视频 2</div>
+    </div>
+    <div class="video-item">
+      <iframe
+        src="https://player.bilibili.com/player.html?bvid=BV11Nej6CEkF&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"
+        scrolling="no"
+        border="0"
+        frameborder="no"
+        framespacing="0"
+        allowfullscreen="true">
+      </iframe>
+      <div class="caption">Kling 生成短视频 3</div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== Section 4：品牌视觉规范 ========== -->
+<section>
+  <h2>品牌视觉规范 / Brand Visual System</h2>
+  <p class="desc">参与建立品牌视觉体系，统一字体、色彩、版式及图片风格</p>
+  <div class="grid">
+    <!-- 替换这里：VI 手册截图，共 2-3 张 -->
+    <div class="grid-item">
+      <img src="https://github.com/siuzingleung-sudo/portfolio/blob/main/imakol-visual-system_01.png?raw=true" alt="VI手册-色彩规范" class="lightbox-trigger">
+      <div class="caption">品牌色彩规范</div>
+    </div>
+    <div class="grid-item">
+      <img src="https://github.com/siuzingleung-sudo/portfolio/blob/main/imakol-visual-system_02.png?raw=true" alt="VI手册-版式规范" class="lightbox-trigger">
+      <div class="caption">品牌字体规范</div>
+    </div>
+    <div class="grid-item">
+      <img src="https://github.com/siuzingleung-sudo/portfolio/blob/main/imakol-visual-system_04.png?raw=true" alt="VI手册-图片风格" class="lightbox-trigger">
+      <div class="caption">图片风格统一规范</div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== Section 5：AI工具能力 ========== -->
+<section>
+  <h2>AI工具能力 / AI Tool Proficiency</h2>
+  <ul class="tool-list">
+    <li>
+      <span class="tool-icon">💬</span>
+      <span>
+        <span class="tool-name">ChatGPT / Claude / Gemini</span>
+        <span class="tool-desc">内容策划、文案撰写、翻译、数据处理</span>
+      </span>
+    </li>
+    <li>
+      <span class="tool-icon">🎨</span>
+      <span>
+        <span class="tool-name">Nano Banana、Image2</span>
+        <span class="tool-desc">AI 图片生成</span>
+      </span>
+    </li>
+    <li>
+      <span class="tool-icon">🎬</span>
+      <span>
+        <span class="tool-name">Kling / seedance</span>
+        <span class="tool-desc">AI 视频生成</span>
+      </span>
+    </li>
+    <li>
+      <span class="tool-icon">🔗</span>
+      <span>
+        <span class="tool-name">Claude + MCP</span>
+        <span class="tool-desc">通过 MCP 链接 Higgsfield 完成图片生成工作流</span>
+      </span>
+    </li>
+  </ul>
+</section>
+
+<!-- ========== Footer ========== -->
+<footer>
+  Portfolio by Gina Liang © 2026
+</footer>
+
+<!-- ========== Lightbox ========== -->
+<div class="lightbox-overlay" id="lightboxOverlay">
+  <img id="lightboxImg" src="" alt="放大图片">
+</div>
+
+<script>
+  (function () {
+    var overlay = document.getElementById('lightboxOverlay');
+    var overlayImg = document.getElementById('lightboxImg');
+    var triggers = document.querySelectorAll('.lightbox-trigger');
+
+    triggers.forEach(function (img) {
+      img.addEventListener('click', function () {
+        overlayImg.src = img.src;
+        overlay.classList.add('active');
+      });
+    });
+
+    overlay.addEventListener('click', function () {
+      overlay.classList.remove('active');
+      overlayImg.src = '';
+    });
+  })();
+</script>
+
+</body>
+</html>
