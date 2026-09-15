@@ -202,6 +202,16 @@
     background: var(--bg-white);
   }
 
+  /* 竖版 3:4 网格（产品海报 / AI宣传海报 / Instagram Post 使用） */
+  .grid.portrait {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  }
+
+  .grid.portrait .grid-item img {
+    aspect-ratio: 3 / 4;
+    height: auto !important;
+  }
+
   /* ---------- Logo grid ---------- */
   .logo-grid {
     display: grid;
@@ -363,6 +373,9 @@
     .grid-item img {
       height: 120px;
     }
+    .grid.portrait {
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    }
     .video-wrap.landscape iframe {
       height: 220px;
     }
@@ -464,8 +477,8 @@
   </div>
 
   <h3 class="sub-title">产品海报</h3>
-  <div class="grid">
-    <!-- 替换这里：产品海报截图，共 6 张 -->
+  <div class="grid portrait">
+    <!-- 替换这里：产品海报截图，共 6 张，竖版 3:4 -->
     <div class="grid-item">
       <img src="https://github.com/siuzingleung-sudo/portfolio/blob/main/海报1png.png?raw=true" alt="产品海报1" class="lightbox-trigger">
       <div class="caption">新品上市宣传海报</div>
@@ -497,7 +510,7 @@
     <!-- 替换这里：微信公众号推文截图，共 3 张 -->
     <div class="grid-item">
       <img src="https://github.com/siuzingleung-sudo/portfolio/blob/main/作品集20251102_14(1).png?raw=true" alt="公众号推文1" class="lightbox-trigger">
-      <div class="caption">结合“鱿鱼游戏”热点创意推文</div>
+      <div class="caption">结合"鱿鱼游戏"热点创意推文</div>
     </div>
     <div class="grid-item">
       <img src="https://github.com/siuzingleung-sudo/portfolio/blob/main/作品集20251102_18.png?raw=true" alt="公众号推文2" class="lightbox-trigger">
@@ -539,8 +552,8 @@
   </div>
 
   <h3 class="sub-title">Instagram Post</h3>
-  <div class="grid">
-    <!-- 替换这里：Instagram Post 截图，共 3 张 -->
+  <div class="grid portrait">
+    <!-- 替换这里：Instagram Post 截图，共 3 张，竖版 3:4 -->
     <div class="grid-item">
       <img src="https://github.com/siuzingleung-sudo/portfolio/blob/main/IG1.png?raw=true" alt="Instagram Post 1" class="lightbox-trigger">
       <div class="caption">Instagram 产品宣传 Post</div>
@@ -574,8 +587,8 @@
   <h2>AI创作作品 / AI Creative Works</h2>
 
   <h3 class="sub-title">宣传海报</h3>
-  <div class="grid">
-    <!-- 替换这里：AI生成宣传海报截图，共 3 张 -->
+  <div class="grid portrait">
+    <!-- 替换这里：AI生成宣传海报截图，共 6 张，竖版 3:4 -->
     <div class="grid-item">
       <img src="https://github.com/siuzingleung-sudo/portfolio/blob/main/ai海报.jpg?raw=true" alt="AI宣传海报1" class="lightbox-trigger">
       <div class="caption">产品卖点宣传海报</div>
@@ -588,14 +601,29 @@
       <img src="https://github.com/siuzingleung-sudo/portfolio/blob/main/20260213%20IK_IG%20Post_Final.png?raw=true" alt="AI宣传海报3" class="lightbox-trigger">
       <div class="caption">节日海报</div>
     </div>
+    <div class="grid-item">
+      <!-- 替换这里：新增第4张AI宣传海报 -->
+      <img src="https://via.placeholder.com/300x400" alt="AI宣传海报4" class="lightbox-trigger">
+      <div class="caption">AI 生成宣传海报</div>
+    </div>
+    <div class="grid-item">
+      <!-- 替换这里：新增第5张AI宣传海报 -->
+      <img src="https://via.placeholder.com/300x400" alt="AI宣传海报5" class="lightbox-trigger">
+      <div class="caption">AI 生成宣传海报</div>
+    </div>
+    <div class="grid-item">
+      <!-- 替换这里：新增第6张AI宣传海报 -->
+      <img src="https://via.placeholder.com/300x400" alt="AI宣传海报6" class="lightbox-trigger">
+      <div class="caption">AI 生成宣传海报</div>
+    </div>
   </div>
 
   <h3 class="sub-title">AI短视频</h3>
   <div class="video-grid-vertical">
-    <!-- 替换这里：AI 短视频，共 3 个，竖版 9:16 -->
+    <!-- 替换这里：AI 短视频，共 4 个，竖版 9:16 -->
     <div class="video-item">
       <iframe
-        src="https://player.bilibili.com/player.html?bvid=BV1c5ej6qEnj&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true""
+        src="https://player.bilibili.com/player.html?bvid=BV1c5ej6qEnj&page=1"
         scrolling="no"
         border="0"
         frameborder="no"
@@ -606,7 +634,7 @@
     </div>
     <div class="video-item">
       <iframe
-        src="https://player.bilibili.com/player.html?bvid=BV1PNej6CEZT&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"
+        src="https://player.bilibili.com/player.html?bvid=BV1PNej6CEZT&page=1"
         scrolling="no"
         border="0"
         frameborder="no"
@@ -617,7 +645,7 @@
     </div>
     <div class="video-item">
       <iframe
-        src="https://player.bilibili.com/player.html?bvid=BV11Nej6CEkF&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"
+        src="https://player.bilibili.com/player.html?bvid=BV11Nej6CEkF&page=1"
         scrolling="no"
         border="0"
         frameborder="no"
@@ -625,6 +653,18 @@
         allowfullscreen="true">
       </iframe>
       <div class="caption">Kling 生成短视频 3</div>
+    </div>
+    <div class="video-item">
+      <!-- 替换这里：新增第4个AI短视频 -->
+      <iframe
+        src="https://player.bilibili.com/player.html?bvid=占位BV号&page=1"
+        scrolling="no"
+        border="0"
+        frameborder="no"
+        framespacing="0"
+        allowfullscreen="true">
+      </iframe>
+      <div class="caption">AI 生成短视频 4</div>
     </div>
   </div>
 </section>
